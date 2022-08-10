@@ -40,16 +40,18 @@ router.post("/", (req, res) => {
   const {
     email,
     password,
-    full_name,
-    billing_address,
-    default_shipping_address,
-    country,
-    phone,
-    user_type,
+    fullname,
+    userpassword,
+    userRole,
+    phonenumber,
+    joinDtae,
+    cartText,
   } = req.body;
   try {
     con.query(
-      `INSERT INTO users (email,password,full_name,billing_address,default_shipping_address,country,phone,user_type) VALUES ('${email}','${password}','${full_name}','${billing_address}','${default_shipping_address}','${country}','${phone}','${user_type}')`,
+      `INSERT INTO users (email,password,fullname,userpassword,userRole,phonenumber,joinDtae,cartText) 
+      VALUES
+    ('${email}','${password}','${fullname}','${userpassword}','${userRole}','${phonenumber}','${joinDtae}','${cartText}')`,
       (err, result) => {
         if (err) throw err;
         res.send(result);
@@ -67,17 +69,19 @@ router.put("/:id", (req, res) => {
   const {
     email,
     password,
-    full_name,
-    billing_address,
-    default_shipping_address,
-    country,
-    phone,
-    user_type,
+    fullname,
+    userpassword,
+    userRole,
+    phonenumber,
+    joinDtae,
+    cartText,
   } = req.body;
 
   try {
     con.query(
-      `UPDATE users SET email='${email}', password='${password}', full_name='${full_name}', billing_address='${billing_address}', default_shipping_address='${default_shipping_address}', country='${country}', phone='${phone}', user_type='${user_type}' WHERE user_id = ${req.params.id}`,
+      `UPDATE users SET email='${email}', password='${password}', fullname='${fullname}',
+       userpassword='${userpassword}', userRole='${userRole}',
+        phonenumber='${phonenumber}', joinDtae='${joinDtae}', cartText='${cartText}' WHERE user_id = ${req.params.id}`,
       (err, result) => {
         if (err) throw err;
         res.send(result);

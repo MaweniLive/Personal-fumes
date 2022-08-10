@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <table class="table">
+      <tr>
+        <th>Full NAME</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>User Type</th>
+        <th>Phone</th>
+        <th>Country</th>
+        <th>Billing Address</th>
+        <th>Default Shipping Address</th>
+      </tr>
+    </table>
+    <script>
+      fetch("http://localhost:6969/users")
+        .then((res) => res.json())
+        .then((data) => {
+          data.forEach((i) => {
+            document.querySelector(".table").innerHTML += `<tr>
+                 <td>${i.full_name}</td>
+                 <td>${i.email}</td>
+                 <td>${i.password}</td>
+                 <td>${i.user_type}</td>
+                 <td>${i.phone}</td>
+                 <td>${i.country}</td>
+                 <td>${i.billing_address}</td>
+                 <td>${i.default_shipping_address}</td>
+                 </tr>`;
+          });
+        });
+    </script>
+  </body>
+</html>
